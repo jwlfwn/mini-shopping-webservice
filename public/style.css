@@ -154,3 +154,7 @@ main .container .btn-row:hover{
     background-color: #c96f53;
     border: 0;
 }
+
+a{
+    text-decoration: none;
+}
