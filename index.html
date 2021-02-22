@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>Mini-Shopping-Webservice</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#7952b3">
+
+    <link rel="icon" href="image/yellow_t.png">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!-- Custom styles for this template -->
+    <link href="public/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- #40241a -->
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #e64a19;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">MSW</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">매거진</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">TV</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">룩북</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">스냅</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="nav-btn btn btn-outline-warning" type="submit">Search</button>
+                        <button class="nav-btn btn btn-outline-warning" type="button">Login</button>
+                        <button class="nav-btn btn btn-outline-warning" type="button">Join</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <rect width="100%" height="100%" fill="#777" /></svg>
+                    <img src="image/carousel_1.jpg" alt="상의 이미지">
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>2021 MSW의 신상품</h1>
+                            <p>봄 스타일을 책임질 스웨터! 지금 바로 만나보세요!</p>
+                            <p><a class="btn btn-md btn-warning" href="#">View more</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <rect width="100%" height="100%" fill="#777" /></svg> -->
+                    <img src="image/carousel_2.jpg" alt="하의 이미지">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>나만의 핏 찾기</h1>
+                            <p>아직도 고민중이세요? 다양하고 멋진 청바지를 통해 나만의 핏을 찾아보세요</p>
+                            <p><a class="btn btn-md btn-warning" href="#">View more</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <rect width="100%" height="100%" fill="#777" /></svg> -->
+                    <img src="image/carousel_3.jpg" alt="신발 이미지">
+                    <div class="container">
+                        <div class="carousel-caption text-end">
+                            <h1>MSW 스니커즈 파격세일 (최대 <span class="carousel-text display-2"><strong>~50%</strong></span>)</h1>
+                            <p>스니커즈 브랜드 1위 MSW에서 파격세일을!!!</p>
+                            <p><a class="btn btn-md btn-warning" href="#">View more</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+        <!-- Marketing messaging and featurettes
+  ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
+
+        <div class="container marketing">
+
+            <!-- 상의  -->
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20200819/1555218/1555218_1_220.jpg" alt="" class="img-trans">
+
+                    <div class="container-head fs-4">블론드나인 <span class="container-limit fs-6">[한정판매]</span></div>
+                    <p>SEMI OVER-FIT ROUND NECK <span class="container-price">39,530원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20210108/1740797/1740797_2_220.jpg" alt="" class="img-trans">
+
+                    <div class="container-head fs-4">니티드</div>
+                    <p><span class="container-text">3/3 배송</span> 비스코스 니트 맨투맨 IVORY <span class="container-price">36,700원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20200122/1279783/1279783_2_220.jpg" alt="" class="img-trans">
+
+                    <div class="container-head fs-4">비바스튜디오</div>
+                    <p>BASIC CUTTING KNIT JS [LIGHT KHAKI] <span class="container-price">48,300원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20191031/1208839/1208839_1_220.jpg" alt="" class="img-trans">
+
+                    <div class="container-head fs-4">그루브라임</div>
+                    <p>[패키지][봄상품] NYC LOCATION SWEAT <span class="container-price">49,000원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20190919/1160367/1160367_2_220.jpg" alt="" class="img-trans">
+
+                    <div class="container-head fs-4">커버낫 <span class="container-limit fs-6">[한정판매]</span></div>
+                    <p>부클 쿠퍼 로고 맨투맨 네이비 <span class="container-price">69,000원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20210111/1742348/1742348_1_220.jpg" alt="" class="img-trans">
+
+                    <div class="container-head fs-4">마크 곤잘레스 <span class="container-limit fs-6">[한정판매]</span></div>
+                    <p>엔젤 와펜 맨투맨 아이보리 <span class="container-price">53,100원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20200309/1340997/1340997_1_220.jpg" alt="" class="img-trans">
+
+                    <div class="container-head fs-4">아웃스탠딩 <button class="container-btn btn btn-sm btn-primary" type="button">쿠폰</button></div>
+                    <p><span class="container-text">2/26 배송</span> V.S.C SWEAT(OLYMPIA)_1% <span class="container-price">55,200원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20200903/1582537/1582537_1_220.jpg" alt="" class="img-trans">
+
+                    <div class="container-head fs-4">디스이즈네버댓</div>
+                    <p>T-Logo Crewneck Grey <span class="container-price">72,000원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20200820/1557508/1557508_1_220.jpg" alt="" class="img-trans">
+
+                    <div class="container-head fs-4">이벳필드</div>
+                    <p>EFF 베츠 맨투맨 그레이 <span class="container-price">47,200원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20170615/577555/577555_4_220.jpg" alt="" class="img-trans">
+
+                    <div class="container-head fs-4">플레어업</div>
+                    <p>[사은품 증정] 스트라이프 오버핏 긴팔 셔츠 <span class="container-price">58,700원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20181130/915512/915512_1_220.jpg" alt="" class="img-trans">
+
+                    <div class="container-head fs-4">에이본</div>
+                    <p>Tom check shirt(Brown) <span class="container-price">16,500원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20200219/1310979/1310979_3_220.jpg" alt="" class="img-trans">
+
+                    <div class="container-head fs-4">콜릿 <span class="container-limit fs-6">[한정판매]</span></div>
+                    <p>MEN 오버핏 고밀도 순면 셔츠 [스카이블루] <span class="container-price">38,200원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+            <!-- 하의 -->
+            
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20180914/858911/858911_6_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">토피</div>
+                    <p>와이드 데님 팬츠 (LIGHT BLUE) <span class="container-price">44,100원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20191016/1188785/1188785_4_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">86로드 <button class="container-btn btn btn-sm btn-primary" type="button">쿠폰</button></div>
+                    <p>[테이퍼드핏]BLACK NORMAL CHIP <span class="container-price">49,500원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20190508/1037219/1037219_2_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">모드나인 <span class="container-limit fs-6">[한정판매]</span></div>
+                    <p>Punk Town - MOD4 crop <span class="container-price">78,400원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20190228/968414/968414_4_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">드로우핏</div>
+                    <p>모더니티 히든 밴딩 슬랙스 [BLACK] <span class="container-price">62,100원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20200924/1622275/1622275_1_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">인스펙터</div>
+                    <p><span class="container-text">3/5 배송</span> 203 SOLID SILHOUETTE WIDE <span class="container-price">62,000원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20200925/1624044/1624044_1_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">드로우핏 <button class="container-btn btn btn-sm btn-primary" type="button">쿠폰</button></div>
+                    <p>모더니티 히든 밴딩 슬랙스 [DUSTY CREAM] <span class="container-price">62,100원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20190823/1126420/1126420_4_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">오너 <button class="container-btn btn btn-sm btn-primary" type="button">쿠폰</button></div>
+                    <p>프리미엄 퍼펙트 패브릭 카고 조거팬츠 밴딩 <span class="container-price">49,840원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20200302/1329472/1329472_1_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">세븐셀라 <span class="container-limit fs-6">[한정판매]</div>
+                    <p><span class="container-text">3/7 배송</span> 사이드 셔링 조거 슬랙스 <span class="container-price">83,700원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20201026/1663530/1663530_1_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">뎃츠잇</div>
+                    <p>[UNISEX] 세미와이드 카고조거 슬랙스 <span class="container-price">40,020원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20190329/999426/999426_3_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">브렌슨 <span class="container-limit fs-6">[한정판매]</div>
+                    <p>[패키지] 루즈핏 트레이닝 스웨트 팬츠 <span class="container-price">32,900원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20210113/1747037/1747037_4_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">아디다스</div>
+                    <p>로고 트레이닝 팬츠-블랙 <span class="container-price">64,900원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20200828/1568057/1568057_1_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">어널러코드</div>
+                    <p><span class="container-text">2/24 배송</span> 사계절 스트링 트레이닝 팬츠 <span class="container-price">48,000원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+            <!-- 신발 -->
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20180703/810034/810034_2_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">컨버스</div>
+                    <p>척 70클래식 블랙 162058C <span class="container-price">80,100원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20180703/810031/810031_3_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">컨버스</div>
+                    <p>척 70클래식 파치먼트 162053C <span class="container-price">85,500원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20170615/577636/577636_4_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">아디다스</div>
+                    <p><span class="container-text">2/27 배송</span> BW 독일군 스니커즈-화이트 / BZ0579 <span class="container-price">139,000원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20140630/104238/104238_10_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">반스</div>
+                    <p>올드스쿨 - 블랙 VN000D3HY281 <span class="container-price">69,000원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20200917/1608838/1608838_2_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">반스</div>
+                    <p>스타일 36 - 마쉬멜로우:레이싱 레드 <span class="container-price">69,000원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                            dy=".3em">140x140</text>
+                    </svg> -->
+                    <img src="https://image.msscdn.net/images/goods_img/20140630/104239/104239_7_500.jpg" alt="" class="img-trans" style="width: 220px; height: 264px;">
+
+                    <div class="container-head fs-4">반스</div>
+                    <p>클래식 슬립온 - (체커보드) 블랙:화이트 <span class="container-price">59,000원</span></p>
+                    <p><a class="btn-row btn btn-secondary" href="#">View details &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+            <!-- START THE FEATURETTES -->
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your
+                            mind.</span></h2>
+                    <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting
+                        prose here.</p>
+                </div>
+                <div class="col-md-5">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                        height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
+                            dy=".3em">500x500</text>
+                    </svg>
+
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for
+                            yourself.</span></h2>
+                    <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of
+                        how this layout would work with some actual real-world content in place.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                        height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
+                            dy=".3em">500x500</text>
+                    </svg>
+
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                    <p class="lead">And yes, this is the last block of representative placeholder content. Again, not
+                        really intended to be actually read, simply here to give you a better view of what this would
+                        look like with some actual content. Your content.</p>
+                </div>
+                <div class="col-md-5">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                        height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
+                            dy=".3em">500x500</text>
+                    </svg>
+
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <!-- /END THE FEATURETTES -->
+
+        </div><!-- /.container -->
+
+
+        <!-- FOOTER -->
+        <footer class="container">
+            <p class="float-end"><a href="#">top</a></p>
+            <p>&copy; 2021 MSW Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        </footer>
+    </main>
+
+
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+        integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+        integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
