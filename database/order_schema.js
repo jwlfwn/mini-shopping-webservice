@@ -7,15 +7,17 @@ Schema.createSchema = function(mongoose) {
     console.log('createSchema 호출됨.');
     
     mongoose.set('useCreateIndex', true);
-    var ShoppingSchema = mongoose.Schema({clinic:[{
-        adtFrDd: {type:[String], requied:true, 'default':''},
-        hospTyTpCd: {type:[String], 'default':''}, // 국민 안심 병원의 경우만 해당
-        sgguNm: {type:[String], requied:true, 'default':''},
-        sidoNm: {type:[String], requied:true, 'default':''},
-        spclAdmTyCd:{type:[String], required:true, 'default':''},
-        telno: {type:[String], required:true, 'default':''},
-        yadmNm: {type:[String], required:true, 'default':''}
-    }]});
+    var ShoppingSchema = mongoose.Schema({
+        merchant_uid: {type:String, required:true, unique:true, 'default':''},
+        name: {type:String, unique:false, default:''},
+        amount: {type:String, unique:false, 'default':''},
+        status :{type:String, unique:false, 'default':''},
+        buyer_email :{type:String, unique:false, 'default':''},
+        buyer_name :{type:String, unique:false, 'default':''},
+        buyer_tel :{type:String, unique:false, 'default':''},
+        created_at: {type:Date, index:{unique:false},'default':Date.now()},
+        updated_at: {type:Date, index:{unique:false},'default':Date.now()}
+    });
     console.log('ShoppingSchema 정의함.');
 
     // mongoose에서 직접 메서드 추가 method이용
