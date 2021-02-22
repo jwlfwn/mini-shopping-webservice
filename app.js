@@ -16,7 +16,10 @@ var config = require('./config/config');
 
 var database_loader = require('./database/database_loader');
 var route_loader = require('./router/route_loader');
-var clinic = require('./router/clinic');
+
+//===== Passport 사용 =====//
+var passport = require('passport');
+var flash = require('connect-flash');
 
 // 서버 객체
 var app = express(); 
@@ -35,7 +38,7 @@ app.use('/public', static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended:false})); 
 app.use(bodyParser.json()); 
 
-// 세션 추가(GPS를 통해 사용자 정보를 가져온 후 세션에 추가해서 근처 병원 찾기)
+// 세션 추가
 app.use(cookieParser());
 app.use(expressSession({
     secret:'my key',
@@ -45,8 +48,21 @@ app.use(expressSession({
 
 app.use(cors());
 
+//===== Passport 초기화 및 로그인 세션유지 =====//
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 var router = express.Router();
 route_loader.init(app, router);
+
+// passport 설정
+var configPassport = require('./config/passport');
+configPassport(app, passport);
+
+// passport 관련 함수 라우팅
+var userPassport = require('./routes/user');
+userPassport(app, passport);
 
 // 등록된 라우터 패스가 없는 경우
 var errorHandler = expressErroHandler({
@@ -63,5 +79,4 @@ var server = http.createServer(app).listen(app.get('port'), function() {
     console.log('익스프레스로 웹 서버를 실행함 : ' + app.get('port'));
     
     database_loader.init(app, config);
-    //clinic.totalNum(database_loader); //-> 오전 07시에 업데이트 한 번만 수행
 });
