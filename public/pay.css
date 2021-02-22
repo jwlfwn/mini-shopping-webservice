@@ -1,0 +1,58 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #ffccbc;
+}
+
+.content{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item_info{
+    padding: 30px;
+}
+
+.item_info .item_image img{
+    width: 250px;
+    height: 250px;
+}
+
+.item_info .item_name{
+    padding: 10px;
+}
+
+.input_control{
+    margin: 7px;
+    max-width: 200px;
+}
+
+.phone_wrap{
+    margin: 7px;
+}
+
+.phone_control{
+    max-width: 50px;
+    border: none;
+    outline: none;
+    padding: 3px 8px;
+    border-radius: .25rem;
+}
+
+.wrap{
+    margin: 7px;
+}
+
+@media screen and (max-width: 768px){
+    .content{
+        flex-direction: column;
+        margin: 100px auto;
+    }
+
+    .content .item_info{
+        padding-left: 0;
+    }
+}
