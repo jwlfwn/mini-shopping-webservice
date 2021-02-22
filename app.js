@@ -61,7 +61,7 @@ var configPassport = require('./config/passport');
 configPassport(app, passport);
 
 // passport 관련 함수 라우팅
-var userPassport = require('./routes/user');
+var userPassport = require('./router/user');
 userPassport(app, passport);
 
 // 등록된 라우터 패스가 없는 경우
