@@ -6,6 +6,6 @@ module.exports = {
         {file:'./user_schema', collection:'user1', schemaName:'UserSchema', modelName:'UserModel'}
     ],
     route_info: [
-        {file:'./order', path:'/process/requestPay', method:'requestPay', type:'post'}
+        //{file:'./order', path:'/process/requestPay', method:'requestPay', type:'post'}
     ]
 };
