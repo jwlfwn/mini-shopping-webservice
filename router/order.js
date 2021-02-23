@@ -1,6 +1,6 @@
 var iamport = require('../config/iamport');
 
-var requestPay = function requestPay(req, res) {
+function requestPay(req, res) {
     console.log('/process/requestPay 라우팅 함수 호출됨.');
     
     var IMP = window.IMP; 
@@ -25,6 +25,4 @@ var requestPay = function requestPay(req, res) {
       }
   });
 }
-
-module.exports.requestPay = requestPay;
   
