@@ -1,3 +1,5 @@
+var iamport = require('../config/iamport');
+
 var selectItem = function(req, res) {
     console.log('/process/selectItem 라우팅 함수 호출됨.');
     
@@ -9,6 +11,7 @@ var selectItem = function(req, res) {
     console.log('요청 검색어 : ' + paramImage + ' ' + paramName + ' ' + paramPrice);
     
     var context = {
+        code:iamport.indentifyCode,
         image:paramImage,
         name:paramName,
         price:paramPrice
