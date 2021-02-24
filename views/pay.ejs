@@ -86,7 +86,7 @@
                         <option value="">기타결제수단</option>
                     </select>
                 </div>
-                &nbsp;&nbsp;<button onclick="requestPay()" type="button" class="btn btn-primary" style="margin-top: 7px;">결제</button>
+                &nbsp;&nbsp;<button onclick="requestPay('<%= code%>')" type="button" class="btn btn-primary" style="margin-top: 7px;">결제</button>
             </fieldset>                     
         </div>
     </form>
@@ -125,13 +125,13 @@
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
             
     <script>
-        function requestPay() {
+        function requestPay(code) {
             var IMP = window.IMP; 
-            IMP.init("");
+            IMP.init(code);
             IMP.request_pay({ // param
               pg: "html5_inicis",
               pay_method: "card",
-              merchant_uid: "ORD20180131-0000013",
+              merchant_uid: "ORD20180131-0000020",
               name: "노르웨이 회전 의자",
               amount: 64900,
               buyer_email: "gildong@gmail.com",

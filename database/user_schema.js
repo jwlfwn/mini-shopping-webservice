@@ -1,5 +1,6 @@
 
-
+// 암호화 모듈
+var crypto = require('crypto');
 
 var Schema = {};
 
