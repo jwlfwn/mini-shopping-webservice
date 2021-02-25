@@ -26,69 +26,67 @@
         </div>
 
         <!-- 구매자정보 + 결제버튼 -->
-        <div class="person_info">
-            <fieldset>
-                <h3 style="font-weight: bold;"><img src="../public/pink_p.png" alt="글씨왼쪽이미지" style="width: 35px; height: 35px; margin-right: 5px; margin-left: 5px">구매 정보<img src="../public/pink_p.png" alt="글씨오른쪽이미지" style="width: 35px; height: 35px; margin-left: 5px"></h3>
-                <div class="input-group flex-nowrap">
-                    <input type="number" min="1" max="100" name="number" class="input_control form-control" placeholder="1"
-                        aria-label="Username" aria-describedby="addon-wrapping">
-                </div>
-                <div class="input-group flex-nowrap">
-                    <input type="text" name="name" class="input_control form-control" placeholder="이름을 입력하세요" aria-label="Username"
-                        aria-describedby="addon-wrapping">
-                </div>
-                <div class="input-group flex-nowrap">
-                    <input type="text" name="email" class="input_control form-control" placeholder="이메일을 입력하세요" aria-label="Username"
-                        aria-describedby="addon-wrapping">
-                </div>
-                <div class="phone_wrap">
-                    <strong>&nbsp;휴대전화 :</strong> <input class="phone_control" type="text" id="tel1" maxlength="3" pattern="^01[0-9]{1}" required="required"
-                        onkeyup="next(this.value, 3, 'tel2');" onkeydown="checkNum(event)"> -
-                    <input class="phone_control" type="text" id="tel2" maxlength="4" pattern="[0-9]{4}" required="required"
-                        onkeyup="next(this.value, 4, 'tel3');" onkeydown="checkNum(event)"> -
-                    <input class="phone_control" type="text" id="tel3" maxlength="4" pattern="[0-9]{4}" required="required"
-                        onkeyup="next(this.value, 4, 'des');" onkeydown="checkNum(event)">
-                </div>
-                <div class="input-group flex-nowrap">
-                    <input id="des" type="text" name="destination" class="input_control form-control" placeholder="배송지를 입력하세요"
-                        aria-label="Username" aria-describedby="addon-wrapping">
-                </div>
-                <div class="input-group flex-nowrap">
-                    <input type="text" name="postcode" class="input_control form-control" placeholder="우편번호를 입력하세요" aria-label="Username"
-                        aria-describedby="addon-wrapping">
-                </div>
-                <div class="wrap">
-                    <strong><결제 수단></strong>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            무신사페이
-                        </label>
+        <form id="payForm">
+            <div class="person_info">
+                <fieldset>
+                    <h3 style="font-weight: bold;"><img src="../public/pink_p.png" alt="글씨왼쪽이미지" style="width: 35px; height: 35px; margin-right: 5px; margin-left: 5px">구매 정보<img src="../public/pink_p.png" alt="글씨오른쪽이미지" style="width: 35px; height: 35px; margin-left: 5px"></h3>
+                    <div class="input-group flex-nowrap">
+                        <input type="number" min="1" max="100" name="number" class="input_control form-control" placeholder="1"
+                            aria-label="Username" aria-describedby="addon-wrapping">
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            일반결제
-                        </label>
+                    <div class="input-group flex-nowrap">
+                        <input type="text" name="name" class="input_control form-control" placeholder="이름을 입력하세요" aria-label="Username"
+                            aria-describedby="addon-wrapping">
                     </div>
-                </div>
-                <div class="wrap">
-                    <strong><결제 안내></strong>
-                    <select class="input_control form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option value="">신용카드</option>
-                        <option value="">가상 계좌(무통장)</option>
-                        <option value="">계좌이체(에스크로)</option>
-                        <option value="">휴대전화</option>
-                        <option value="">해외 카드</option>
-                        <option value="">토스</option>
-                        <option value="">카카오페이</option>
-                        <option value="">네이버페이</option>
-                        <option value="">기타결제수단</option>
-                    </select>
-                </div>
-                &nbsp;&nbsp;<button onclick="requestPay('<%= code%>')" type="button" class="btn btn-primary" style="margin-top: 7px;">결제</button>
-            </fieldset>                     
-        </div>
+                    <div class="input-group flex-nowrap">
+                        <input type="text" name="email" class="input_control form-control" placeholder="이메일을 입력하세요" aria-label="Username"
+                            aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <input type="text" name="tel" class="input_control form-control" placeholder="전화번호를 입력하세요" aria-label="Username"
+                            aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <input id="des" type="text" name="destination" class="input_control form-control" placeholder="배송지를 입력하세요"
+                            aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <input type="text" name="postcode" class="input_control form-control" placeholder="우편번호를 입력하세요" aria-label="Username"
+                            aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="wrap">
+                        <strong><결제 수단></strong>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                무신사페이
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                일반결제
+                            </label>
+                        </div>
+                    </div>
+                    <div class="wrap">
+                        <strong><결제 안내></strong>
+                        <select class="input_control form-select form-select-sm" aria-label=".form-select-sm example">
+                            <option value="">신용카드</option>
+                            <option value="">가상 계좌(무통장)</option>
+                            <option value="">계좌이체(에스크로)</option>
+                            <option value="">휴대전화</option>
+                            <option value="">해외 카드</option>
+                            <option value="">토스</option>
+                            <option value="">카카오페이</option>
+                            <option value="">네이버페이</option>
+                            <option value="">기타결제수단</option>
+                        </select>
+                    </div>
+                    &nbsp;&nbsp;<button onclick="requestPay('<%= code%>','<%= name %>')" type="button" class="btn btn-primary" style="margin-top: 7px;">결제</button>
+                </fieldset>                     
+            </div>
+        </form>
     </form>
 
 
@@ -125,28 +123,54 @@
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
             
     <script>
-        function requestPay(code) {
+        function requestPay(code, prName) {
             var IMP = window.IMP; 
             IMP.init(code);
-            IMP.request_pay({ // param
-              pg: "html5_inicis",
-              pay_method: "card",
-              merchant_uid: "ORD20180131-0000020",
-              name: "노르웨이 회전 의자",
-              amount: 64900,
-              buyer_email: "gildong@gmail.com",
-              buyer_name: "홍길동",
-              buyer_tel: "010-4242-4242",
-              buyer_addr: "서울특별시 강남구 신사동",
-              buyer_postcode: "01181"
-            }, function (rsp) { // callback
-              if (rsp.success) {
-                  // 결제 성공 시 로직,
-                  console.log('테스트 성공~~');
-              } else {
-                  // 결제 실패 시 로직,
-              }
-            });   
+            
+            var merchant_uid = Date.now();
+            $.ajax({
+                url:'/process/requestPay',
+                type:'POST',
+                data: {
+                    uid:merchant_uid,
+                    product_name:prName,
+                    amount:$('input[name=number]').val(),
+                    buyer_email:$('input[name=name]').val(),
+                    buyer_name:$('input[name=email]').val(),
+                    buyer_tel:$('input[name=tel]').val()
+                    //name:$('#name').val()
+                },
+                dataType:"json",
+                success: function(result) {
+                    var rData = JSON.parse(result);
+                    if(rData.message == 'success') {
+                        IMP.request_pay({ // param
+                          pg: "html5_inicis",
+                          pay_method: "card",
+                          merchant_uid: "ORD20180131-0000021",
+                          name: "노르웨이 회전 의자",
+                          amount: 64900,
+                          buyer_email: "gildong@gmail.com",
+                          buyer_name: "홍길동",
+                          buyer_tel: "010-4242-4242",
+                          buyer_addr: "서울특별시 강남구 신사동",
+                          buyer_postcode: "01181"
+                        }, function (rsp) { // callback
+                          if (rsp.success) {
+                              // 결제 성공 시 로직,
+                              console.log('테스트 성공~~');
+                          } else {
+                              // 결제 실패 시 로직,
+                          }
+                        });
+                    } else {
+                        alert('주문 정보 저장 중 오류 발생!');
+                    }
+                },
+                error:function(xhr, status) {
+                    alert('결제 중 오류 발생!');
+                }            
+            })  
         }
     </script>
             
