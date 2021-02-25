@@ -49,8 +49,37 @@ var requestPay = function(req, res) {
     
     console.log('요청 검색어 : ' + merchant_uid + '-' + product_name + '-' + amount + '-' + buyer_email + '-' + buyer_name + '-' + buyer_tel);
     
-     
+    var database = req.app.get('database');
+    addOrder(database, merchant_uid, product_name, amount, buyer_email,     buyer_name, buyer_tel, function(err, result) {
+        if(err) {
+               console.log('에러 발생.');
+               res.send({message:"error"});
+           } 
+            
+        if(result) {
+            res.send({message:"success"});
+        } else {
+            res.send({message:"error"});
+        }
+    })   
 };
+
+var addOrder = function(db, merchant_uid, product_name, amount, buyer_email,     buyer_name, buyer_tel, callback) {
+    console.log('addOrder 호출됨');
+    
+    var order = new db.ShoppingModel({"merchant_uid":merchant_uid,"name":product_name,"amount":amount,"buyer_email":buyer_email,"buyer_name":buyer_name,"buyer_tel":buyer_tel,"created_at":Date.now()});
+    
+    order.save(function(err) {
+        if(err) {
+            callback(err, null);
+            return;
+        }
+        
+        console.log('주문 데이터 추가함.');
+        callback(null, order);
+    });
+    
+}
 
 module.exports.selectItem = selectItem;
 module.exports.requestPay = requestPay;

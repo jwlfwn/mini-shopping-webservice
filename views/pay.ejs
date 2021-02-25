@@ -83,7 +83,7 @@
                             <option value="">기타결제수단</option>
                         </select>
                     </div>
-                    &nbsp;&nbsp;<button onclick="requestPay('<%= code%>','<%= name %>')" type="button" class="btn btn-primary" style="margin-top: 7px;">결제</button>
+                    &nbsp;&nbsp;<button onclick="requestPay('<%= code%>','<%= name %>','<%= price %>')" type="button" class="btn btn-primary" style="margin-top: 7px;">결제</button>
                 </fieldset>                     
             </div>
         </form>
@@ -123,7 +123,7 @@
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
             
     <script>
-        function requestPay(code, prName) {
+        function requestPay(code, prName, price) {
             var IMP = window.IMP; 
             IMP.init(code);
             
@@ -134,27 +134,26 @@
                 data: {
                     uid:merchant_uid,
                     product_name:prName,
-                    amount:$('input[name=number]').val(),
+                    amount:parseInt(price)*parseInt($('input[name=number]').val()),
                     buyer_email:$('input[name=name]').val(),
                     buyer_name:$('input[name=email]').val(),
                     buyer_tel:$('input[name=tel]').val()
                     //name:$('#name').val()
                 },
-                dataType:"json",
+                dataType:'json',
                 success: function(result) {
-                    var rData = JSON.parse(result);
-                    if(rData.message == 'success') {
+                    if(result.message == "success") {
                         IMP.request_pay({ // param
                           pg: "html5_inicis",
                           pay_method: "card",
-                          merchant_uid: "ORD20180131-0000021",
-                          name: "노르웨이 회전 의자",
-                          amount: 64900,
-                          buyer_email: "gildong@gmail.com",
-                          buyer_name: "홍길동",
-                          buyer_tel: "010-4242-4242",
-                          buyer_addr: "서울특별시 강남구 신사동",
-                          buyer_postcode: "01181"
+                          merchant_uid: merchant_uid,
+                          name: prName,
+                          amount: parseInt(price)*parseInt($('input[name=number]').val()),
+                          buyer_email: $('input[name=name]').val(),
+                          buyer_name: $('input[name=email]').val(),
+                          buyer_tel: $('input[name=tel]').val(),
+                          buyer_addr: $('input[name=destination]').val(),
+                          buyer_postcode: $('input[name=postcode]').val()
                         }, function (rsp) { // callback
                           if (rsp.success) {
                               // 결제 성공 시 로직,
