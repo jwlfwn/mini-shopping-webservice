@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>로그인</title>
-    </head>
-    <body>
-        <h1>로그인</h1>
-        <br>
-        <form method="post" action="/login"> <!-- post방식으로 요청 -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="blue_p.png">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="wrap">
+        <h1><img class="login-img" src="blue_p.png" alt="로그인 옆 파란색 반바지 이미지"> <strong style="color: #001064;">Login</strong> <img class="login-img" src="blue_p.png" alt="로그인 옆 파란색 반바지 이미지"></h1>
+        <form method="post" action="/login">
+            <!-- post방식으로 요청 -->
             <table>
                 <tr>
-                    <td><label>이메일</label></td>
-                    <td><input type="text" name="email"></td>
+                    <td><label><strong>이메일</strong></label></td>
+                    <td><input type="text" class="form-control"  aria-label="Useremail" aria-describedby="basic-addon1" name="email"></td>
                 </tr>
                 <tr>
-                    <td><label>비밀번호</label></td>
-                    <td><input type="password" name="password"></td>
+                    <td><label><strong>비밀번호&nbsp;&nbsp;</strong></label></td>
+                    <td><input type="password"  class="form-control"  aria-label="Userpassword" aria-describedby="basic-addon1" name="password"></td>
                 </tr>
             </table>
-            <input type="submit" value="전송" name="">
+            <input type="submit" value="Click" class="form-control submit-under container" name="user-info">
         </form>
-    </body>
-    
+    </div>
+</body>
+
 </html>
