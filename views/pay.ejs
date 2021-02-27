@@ -135,8 +135,8 @@
                     uid:merchant_uid,
                     product_name:prName,
                     amount:parseInt(price)*parseInt($('input[name=number]').val()),
-                    buyer_email:$('input[name=name]').val(),
-                    buyer_name:$('input[name=email]').val(),
+                    buyer_email:$('input[name=email]').val(),
+                    buyer_name:$('input[name=name]').val(),
                     buyer_tel:$('input[name=tel]').val()
                     //name:$('#name').val()
                 },
@@ -145,21 +145,22 @@
                     if(result.message == "success") {
                         IMP.request_pay({ // param
                           pg: "html5_inicis",
-                          pay_method: "card",
+                          pay_method: "vbank",
                           merchant_uid: merchant_uid,
                           name: prName,
                           amount: parseInt(price)*parseInt($('input[name=number]').val()),
-                          buyer_email: $('input[name=name]').val(),
-                          buyer_name: $('input[name=email]').val(),
+                          buyer_email: $('input[name=email]').val(),
+                          buyer_name: $('input[name=name]').val(),
                           buyer_tel: $('input[name=tel]').val(),
                           buyer_addr: $('input[name=destination]').val(),
                           buyer_postcode: $('input[name=postcode]').val()
                         }, function (rsp) { // callback
                           if (rsp.success) {
-                              // 결제 성공 시 로직,
-                              console.log('테스트 성공~~');
+                              // 결제 성공 시 로직
+                              alert('결제 성공.');
                           } else {
-                              // 결제 실패 시 로직,
+                              // 결제 실패 시 로직
+                              alert('결제 중 오류 발생!');
                           }
                         });
                     } else {
