@@ -10,8 +10,9 @@ Schema.createSchema = function(mongoose) {
     var ShoppingSchema = mongoose.Schema({
         merchant_uid: {type:String, required:true, unique:true, 'default':''},
         name: {type:String, unique:false, default:''},
-        amount: {type:String, unique:false, 'default':''},
+        amount: {type:Number, unique:false, 'default':''},
         status :{type:String, unique:false, 'default':''},
+        imp_uid :{type:String, unique:true, 'default':''},
         buyer_email :{type:String, unique:false, 'default':''},
         buyer_name :{type:String, unique:false, 'default':''},
         buyer_tel :{type:String, unique:false, 'default':''},
@@ -24,7 +25,7 @@ Schema.createSchema = function(mongoose) {
 
     // mongoose에서 직접 메서드 추가 static이용
     ShoppingSchema.static('findById', function(id, callback) {
-        return this.find({id:id}, callback);
+        return this.find({merchant_uid:id}, callback);
     });
 
     ShoppingSchema.static('findAll', function(callback) {
