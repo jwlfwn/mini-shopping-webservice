@@ -71,16 +71,13 @@
                     </div>
                     <div class="wrap">
                         <strong><결제 안내></strong>
-                        <select class="input_control form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option value="">신용카드</option>
-                            <option value="">가상 계좌(무통장)</option>
-                            <option value="">계좌이체(에스크로)</option>
-                            <option value="">휴대전화</option>
-                            <option value="">해외 카드</option>
-                            <option value="">토스</option>
-                            <option value="">카카오페이</option>
-                            <option value="">네이버페이</option>
-                            <option value="">기타결제수단</option>
+                        <select class="input_control form-select form-select-sm" aria-label=".form-select-sm example" id="payInform">
+                            <option value="card">신용카드</option>
+                            <option value="vbank">가상 계좌(무통장)</option>
+                            <option value="trans">계좌이체(에스크로)</option>
+                            <option value="phone">휴대전화</option>
+                            <option value="tosspay">토스</option>
+                            <option value="kakaopay">카카오페이</option>
                         </select>
                     </div>
                     &nbsp;&nbsp;<button onclick="requestPay('<%= code%>','<%= name %>','<%= price %>')" type="button" class="btn btn-primary" style="margin-top: 7px;">결제</button>
@@ -128,38 +125,47 @@
             IMP.init(code);
             
             var merchant_uid = Date.now();
+            var amount = parseInt(price)*parseInt($('input[name=number]').val());
+            var buyer_email = $('input[name=email]').val();
+            var buyer_name = $('input[name=name]').val();
+            var buyer_tel = $('input[name=tel]').val();
+            var buyer_addr = $('input[name=destination]').val();
+            var buyer_postcode = $('input[name=postcode]').val();
+            var pg = "html5_inicis";
+            var pay_method = $("#payInform option:selected").val();
+            
             $.ajax({
                 url:'/process/requestPay',
                 type:'POST',
                 data: {
                     uid:merchant_uid,
                     product_name:prName,
-                    amount:parseInt(price)*parseInt($('input[name=number]').val()),
-                    buyer_email:$('input[name=name]').val(),
-                    buyer_name:$('input[name=email]').val(),
-                    buyer_tel:$('input[name=tel]').val()
-                    //name:$('#name').val()
+                    amount:amount,
+                    buyer_email:buyer_email,
+                    buyer_name:buyer_name,
+                    buyer_tel:buyer_tel
                 },
                 dataType:'json',
                 success: function(result) {
                     if(result.message == "success") {
                         IMP.request_pay({ // param
-                          pg: "html5_inicis",
-                          pay_method: "card",
+                          pg: pg,
+                          pay_method: pay_method,
                           merchant_uid: merchant_uid,
                           name: prName,
-                          amount: parseInt(price)*parseInt($('input[name=number]').val()),
-                          buyer_email: $('input[name=name]').val(),
-                          buyer_name: $('input[name=email]').val(),
-                          buyer_tel: $('input[name=tel]').val(),
-                          buyer_addr: $('input[name=destination]').val(),
-                          buyer_postcode: $('input[name=postcode]').val()
+                          amount: amount,
+                          buyer_email: buyer_email,
+                          buyer_name: buyer_name,
+                          buyer_tel: buyer_tel,
+                          buyer_addr: buyer_addr,
+                          buyer_postcode: buyer_postcode
                         }, function (rsp) { // callback
                           if (rsp.success) {
-                              // 결제 성공 시 로직,
-                              console.log('테스트 성공~~');
+                              // 결제 성공 시 로직
+                              alert('결제 성공.');
                           } else {
-                              // 결제 실패 시 로직,
+                              // 결제 실패 시 로직
+                              alert('결제 중 오류 발생!');
                           }
                         });
                     } else {

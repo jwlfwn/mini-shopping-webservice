@@ -1,6 +1,7 @@
 var iamport = require('../config/iamport');
-//var multipart = require('connect-multiparty');
-//var multipartMiddleware = multipart();
+var axios = require('axios');
+var accessToken = require('./accessToken');
+var payment = require('./payment');
 
 var selectItem = function(req, res) {
     console.log('/process/selectItem 라우팅 함수 호출됨.');
@@ -50,18 +51,17 @@ var requestPay = function(req, res) {
     console.log('요청 검색어 : ' + merchant_uid + '-' + product_name + '-' + amount + '-' + buyer_email + '-' + buyer_name + '-' + buyer_tel);
     
     var database = req.app.get('database');
-    addOrder(database, merchant_uid, product_name, amount, buyer_email,     buyer_name, buyer_tel, function(err, result) {
+    addOrder(database, merchant_uid, product_name, amount, buyer_email, buyer_name, buyer_tel, function(err, result) {
         if(err) {
                console.log('에러 발생.');
+               console.log(err);
                res.send({message:"error"});
            } 
             
         if(result) {
             res.send({message:"success"});
-        } else {
-            res.send({message:"error"});
-        }
-    })   
+        }   
+    });
 };
 
 var addOrder = function(db, merchant_uid, product_name, amount, buyer_email,     buyer_name, buyer_tel, callback) {
@@ -81,5 +81,62 @@ var addOrder = function(db, merchant_uid, product_name, amount, buyer_email,    
     
 }
 
+var iamport_webhook = async function(req, res) {
+    try {
+        console.log('/process/iamport-callback 라우팅 함수 호출됨.');
+    
+        var merchant_uid = req.body.merchant_uid;
+        var imp_uid = req.body.imp_uid;
+
+        console.log('iamport_webhook 인자 : ' + merchant_uid + '-' + imp_uid);
+
+        // 엑세스 토큰 가져오기
+        var access_token = await accessToken.getToken();
+
+        console.log('access_token 인자 : ' + access_token);
+
+        // imp_uid로 아임포트 서버에서 결제 정보 조회
+        var paymentData = await payment.getpayMentHistory(imp_uid, access_token); // 조회한 결제 정보
+
+        // DB에서 결제되어야 하는 금액 조회
+        var database = req.app.get('database');
+        var order = await database.ShoppingModel.findById(paymentData.merchant_uid);
+        var amountToBePaid = order[0].amount; // 결제 되어야 하는 금액
+
+        // 결제 검증하기
+        var { amount, status } = paymentData;
+
+        console.log('결제된 금액 : ' + amount + ', 결제 되었어야 하는 금액 : ' + order[0].amount);
+
+        if (amount === amountToBePaid) { // 결제 금액 일치. 결제 된 금액 === 결제 되어야 하는 금액
+            await database.ShoppingModel.update({'merchant_uid':merchant_uid}, {$set :{'status':status, 'imp_uid':imp_uid}}, function(err){
+                if(err) {console.log(err);}
+            });
+            switch (status) {
+            case "ready": // 가상계좌 발급
+              // DB에 가상계좌 발급 정보 저장
+              var { buyer_email, vbank_num, vbank_date, vbank_name } = paymentData;
+              await database.UserModel.update({'email':buyer_email}, { $set: { vbank_num : vbank_num, vbank_date :vbank_date, vbank_name:vbank_name }}, 
+                function(err){
+                    if(err) {callback(err);}
+                });
+              // 가상계좌 발급 안내 문자메시지 발송
+              console.log("가상계좌 : " + vbank_name + " " + vbank_num + "로 발급완료.");    
+              res.send({ status: "vbankIssued", message: "가상계좌 발급 성공" });
+              break;
+            case "paid": // 결제 완료
+              res.send({ status: "success", message: "일반 결제 성공" });
+              break;
+          }
+        } else { // 결제 금액 불일치. 위/변조 된 결제
+          throw { status: "forgery", message: "위조된 결제시도" };
+        }
+    } catch (e) {
+        console.log(e);
+        res.status(400).send(e);
+    }  
+}
+
 module.exports.selectItem = selectItem;
 module.exports.requestPay = requestPay;
+module.exports.iamport_webhook = iamport_webhook;
