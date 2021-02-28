@@ -12,7 +12,7 @@ Schema.createSchema = function(mongoose) {
         name: {type:String, unique:false, default:''},
         amount: {type:Number, unique:false, 'default':''},
         status :{type:String, unique:false, 'default':''},
-        imp_uid :{type:String, unique:true, 'default':''},
+        imp_uid :{type:String, unique:true, 'default': new Date().getTime()},
         buyer_email :{type:String, unique:false, 'default':''},
         buyer_name :{type:String, unique:false, 'default':''},
         buyer_tel :{type:String, unique:false, 'default':''},
