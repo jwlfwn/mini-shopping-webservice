@@ -1,5 +1,7 @@
 var iamport = require('../config/iamport');
 var axios = require('axios');
+var accessToken = require('./accessToken');
+var payment = require('./payment');
 
 var selectItem = function(req, res) {
     console.log('/process/selectItem 라우팅 함수 호출됨.');
@@ -89,29 +91,12 @@ var iamport_webhook = async function(req, res) {
         console.log('iamport_webhook 인자 : ' + merchant_uid + '-' + imp_uid);
 
         // 엑세스 토큰 가져오기
-        //var token = require('./accessToken');
-        var getToken = await axios({
-            url: "https://api.iamport.kr/users/getToken",
-            method: "POST", // POST method
-            headers: { "Content-Type": "application/json" }, 
-            data: {
-                imp_key: iamport.apikey, // REST API키
-                imp_secret: iamport.apiSecret// REST API Secret
-            }
-        });    
-
-        var {access_token} = getToken.data.response; 
+        var access_token = await accessToken.getToken();
 
         console.log('access_token 인자 : ' + access_token);
 
         // imp_uid로 아임포트 서버에서 결제 정보 조회
-        const getPaymentData = await axios({
-          url:'https://api.iamport.kr/payments/'+imp_uid,
-          method: "get", 
-          headers: { "Authorization": access_token } 
-        });
-
-        var paymentData = getPaymentData.data.response; // 조회한 결제 정보
+        var paymentData = await payment.getpayMentHistory(imp_uid, access_token); // 조회한 결제 정보
 
         // DB에서 결제되어야 하는 금액 조회
         var database = req.app.get('database');
